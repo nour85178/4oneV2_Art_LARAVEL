@@ -1,0 +1,82 @@
+/*
+Template Name: Gal Art
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+/*********************login****************/
+#register{
+ padding-top:40px;
+ padding-bottom:40px; 
+  }
+#register ::placeholder {
+  color: #666;
+  opacity: 1; 
+}
+.register_1li h4{
+margin-top:15px;
+  }
+.register_1li1l{
+margin-top:10px;  
+  }
+.register_1li1l .form-control{
+ margin-top:10px;
+ border-radius:0;
+ border-color:#ddd;
+ box-shadow:none;
+ font-size:16px;
+ }
+.register_1li1l .button{
+ float:left;
+ margin-right:10px; 
+  }
+.register_1li1l .tick_box{
+display:inline-block;
+margin-top:25px;  
+  }
+.register_1li1l h6{
+clear:left;
+margin-top:30px;  
+  }
+
+.register_1li2{
+margin-top:10px;  
+  }
+.register_1li2 p span{
+ margin-left:10px;
+ }
+.term{
+ margin-top:15px;
+ line-height:1.6em;
+ }
+.login_page{
+  margin-top:15px;
+  }
+.c_text{
+color:#788954;
+  }
+/*********************login_end****************/
+
+@media screen and (max-width : 767px){
+#register{
+text-align:center; 
+ }
+.register_1r {
+margin-top:15px;
+ }
+.register_1li1l .button {
+float: none; 
+margin-right:0;
+}
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+ }
+@media (min-width:992px) and (max-width:1200px) {
+
+  }
+@media (min-width:1201px) and (max-width:1350px) {
+
+ }

@@ -1,0 +1,96 @@
+/*
+Template Name: Gal Art
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+/*********************about****************/
+#about{
+padding-top:40px;
+padding-bottom:40px; 
+ }
+ 
+.example_h_1l span i{
+  font-size:40px;
+  color:#000;
+  }
+.example_h_1l{
+ box-shadow: 0 0 10px #788954;
+ padding:20px 10px 25px 10px;
+ background:#fff; 
+  }
+.example_h_1l hr{
+border-width:3px;
+border-color:#788954;
+width:15%;
+ }
+.example_h_1{
+ margin-top:30px; 
+  }
+.team_homeii {
+border: 1px solid #ddd;
+padding: 5px 10px 20px 10px;
+background:#fff;
+}
+.team_homeii ul li a {
+background-color: #788954;
+}
+#team_pg{
+padding-top:40px;
+padding-bottom:40px;
+background:#f3fbe2; 
+ }
+#connect{
+padding-top:40px;
+padding-bottom:40px;
+  }
+.connect_1m{
+  display:flex;
+  }
+.connect_1l span{
+ font-size:40px;
+ color: #788954;
+ margin-right:15px;
+  }
+.connect_1r h4{
+ margin-top:10px;
+ font-size:20px;
+  }
+.connect_1r p{
+ margin-top:5px; 
+ font-size:16px;
+ letter-spacing:0;
+  }
+/*********************about_end****************/
+
+@media screen and (max-width : 767px){
+.example_h_1l {
+margin-bottom:10px; 
+ }
+.team_homei {
+margin-bottom:10px;  
+ }
+.connect_1m{
+display:block!important;
+text-align:center; 
+ }
+.connect_1l span{
+margin-right:0!important; 
+display:inline-block;
+margin-top:10px;
+ }
+.connect_1r h4{
+margin-top:0!important; 
+ }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+ }
+@media (min-width:992px) and (max-width:1200px) {
+
+  }
+@media (min-width:1201px) and (max-width:1350px) {
+
+ }
