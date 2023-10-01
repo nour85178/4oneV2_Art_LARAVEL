@@ -1,1 +1,4 @@
-@extends('FrontEnd.front')
+
+@include('FrontEnd.navbarfront')
+
+@include('FrontEnd.footerfront')
