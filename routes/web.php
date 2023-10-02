@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\TemplateController::Class,'index']);
+Route::get('/dashboard', [App\Http\Controllers\Dashboard::Class,'index']);
