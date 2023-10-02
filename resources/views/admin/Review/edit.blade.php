@@ -11,7 +11,5 @@
     <label for="note">Note:</label>
     <input type="number" name="note" id="note" min="1" max="5" value="{{ $review->note }}">
 
-    <!-- Add more fields as needed -->
-
     <button type="submit">Submit</button>
 </form>

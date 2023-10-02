@@ -1,4 +1,3 @@
-<!-- resources/views/admin/Review/create.blade.php -->
 <h1>Create Review</h1>
 
 <form action="{{ route('reviews.store') }}" method="POST">
@@ -21,8 +20,6 @@
 
     <label for="PosNeg">PosNeg:</label>
     <input type="checkbox" name="PosNeg" id="PosNeg" value="1">
-
-    <!-- Add more fields as needed -->
 
     <button type="submit">Submit</button>
 </form>
