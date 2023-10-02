@@ -14,7 +14,9 @@ class ReviewController extends Controller
         return view('admin.Review.index', compact('reviews'));
     }
     public function show($id){
-        return Review::findorFail($id);
+        $review= Review::findorFail($id);
+        return view('admin.Review.show', compact('review'));
+
     }
     public function create()
 {
@@ -23,11 +25,18 @@ class ReviewController extends Controller
     public function store(Request $request){
         return Review::create($request->all());
     }
-    public function update(Request $request, $id){
-        $review = Review::findOrFail($id);
-        $review->update($request->all());
-        return $review;
-    }
+    public function edit($id)
+{
+    $review = Review::findOrFail($id);
+    return view('admin.Review.edit', compact('review'));
+}
+public function update(Request $request, $id)
+{
+    $review = Review::findOrFail($id);
+    $review->update($request->all());
+    return redirect()->route('reviews.index')->with('success', 'Review updated successfully');
+}
+
     public function delete(Request $request, $id){
         $review = Review::findOrFail($id);
         $review->delete();

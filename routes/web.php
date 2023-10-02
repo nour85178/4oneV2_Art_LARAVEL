@@ -31,3 +31,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('reviews', ReviewController::class);
 Route::get('reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+Route::put('reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::get('reviews/{review}/show', [ReviewController::class, 'show'])->name('reviews.show');
+Route::delete('reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
+Route::post('reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+Route::put('reviews/{review}/update', [ReviewController::class, 'update'])->name('reviews.update');

@@ -20,7 +20,7 @@
     <input type="number" name="dislike" id="dislike">
 
     <label for="PosNeg">PosNeg:</label>
-    <input type="checkbox" name="PosNeg" id="PosNeg">
+    <input type="checkbox" name="PosNeg" id="PosNeg" value="1">
 
     <!-- Add more fields as needed -->
 

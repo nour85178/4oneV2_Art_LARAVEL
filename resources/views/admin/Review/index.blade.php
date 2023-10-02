@@ -15,7 +15,7 @@
         <a href="{{ route('reviews.edit', $review->id) }}">Edit</a>
 
         <!-- Form to delete review -->
-        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display: inline-block;">
+        <form action="{{ route('reviews.delete', $review->id) }}" method="POST" style="display: inline-block;">
             @csrf
             @method('DELETE')
             <button type="submit">Delete</button>
