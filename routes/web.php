@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', [App\Http\Controllers\TemplateController::Class,'index']);
-Route::get('/dashboard', [App\Http\Controllers\Dashboard::Class,'index']);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Dashboard::class, 'index']);
+    //eli bech yzid urelet fel back yzidhom te7t hedhi ya bbiet
+});
+
+Route::middleware(['auth', 'client'])->group(function () {
+    Route::get('/front', [App\Http\Controllers\TemplateController::class, 'index']);
+    //eli bech yzid urelet fel front yzidhom te7t hedhi ya bbiet
+});
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
