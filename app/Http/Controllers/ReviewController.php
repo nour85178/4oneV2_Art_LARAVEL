@@ -41,7 +41,7 @@ public function update(Request $request, $id)
     public function delete(Request $request, $id){
         $review = Review::findOrFail($id);
         $review->delete();
-        return 204;
+        return redirect()->route('reviews.index')->with('success', 'Review Deleted successfully');
     }
 
 }
