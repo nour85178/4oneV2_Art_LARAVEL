@@ -1,25 +1,55 @@
-<h1>Create Review</h1>
+@extends('layout.layout')
+@section('content')
 
-<form action="{{ route('reviews.store') }}" method="POST">
-    @csrf
+<style>
+    .form-control {
+        background-color: white;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Create Review</h1>
 
-    <label for="description">Description:</label>
-    <input type="text" name="description" id="description">
+            <form action="{{ route('reviews.store') }}" method="POST">
+                @csrf
 
-    <label for="note">Note:</label>
-    <input type="number" name="note" id="note" min="1" max="5">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" name="description" id="description">
+                </div>
 
-    <label for="image">Image:</label>
-    <input type="text" name="image" id="image">
+                <div class="form-group">
+                    <label for="note">Note:</label>
+                    <input type="number" class="form-control" name="note" id="note" min="1" max="5">
+                </div>
 
-    <label for="like">Like:</label>
-    <input type="number" name="like" id="like">
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="text" class="form-control" name="image" id="image">
+                </div>
 
-    <label for="dislike">Dislike:</label>
-    <input type="number" name="dislike" id="dislike">
+                <div class="form-group">
+                    <label for="like">Like:</label>
+                    <input type="number" class="form-control" name="like" id="like">
+                </div>
 
-    <label for="PosNeg">PosNeg:</label>
-    <input type="checkbox" name="PosNeg" id="PosNeg" value="1">
+                <div class="form-group">
+                    <label for="dislike">Dislike:</label>
+                    <input type="number" class="form-control" name="dislike" id="dislike">
+                </div>
 
-    <button type="submit">Submit</button>
-</form>
+                <div class="form-group">
+                    <label for="PosNeg">PosNeg:</label>
+                    <input type="checkbox" class="form-check-input" name="PosNeg" id="PosNeg" value="1">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection
