@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="note">Image:</label>
-                    <input type="number" class="form-control" name="image" id="image"  value="{{ $review->image }}">
+                    <input type="text" class="form-control" name="image" id="image"  value="{{ $review->image }}">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
