@@ -1,5 +1,5 @@
 <!-- resources/views/commandes/create.blade.php -->
-@extends('layouts.app')
+@extends('layout.layout')
 
 @section('content')
     <div class="container">

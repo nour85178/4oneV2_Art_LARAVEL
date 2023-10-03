@@ -1,4 +1,4 @@
-@extends('layouts.app') <!-- You can use your layout or extend another one -->
+@extends('layout.layout') <!-- You can use your layout or extend another one -->
 
 @section('content')
 <div class="container">
