@@ -1,24 +1,37 @@
-<h1>Create Product</h1>
+@extends('layout.layout')
 
-<form action="{{ route('products.store') }}" method="POST">
-    @csrf
+@section('content')
+<div class="container">
+    <h1>Create Product</h1>
 
-    <label for="titre">Titre:</label>
-    <input type="text" name="titre" id="titre">
+    <form action="{{ route('products.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="titre">Titre:</label>
+            <input type="text" class="form-control" name="titre" id="titre">
+        </div>
 
-    <label for="description">Description:</label>
-    <input type="text" name="description" id="description">
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" name="description" id="description">
+        </div>
 
-    <label for="image">Image:</label>
-    <input type="text" name="image" id="image">
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="text" class="form-control" name="image" id="image">
+        </div>
 
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price">
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" name="price" id="price">
+        </div>
 
-    <label for="category">Category:</label>
-    <input type="text" name="category" id="category">
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" class="form-control" name="category" id="category">
+        </div>
 
-  
-
-    <button type="submit">Submit</button>
-</form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+@endsection

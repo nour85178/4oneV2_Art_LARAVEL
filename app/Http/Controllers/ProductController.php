@@ -11,6 +11,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('admin.Product.index', compact('products'));
+
     }
     public function show($id){
         $product= Product::findorFail($id);
@@ -19,10 +20,19 @@ class ProductController extends Controller
     }
     public function create()
 {
-    return view('admin.Product.create');
+     return view('admin.Product.create');
+
+    
 }
+
+
     public function store(Request $request){
-        return Product::create($request->all());
+        // return Product::create($request->all());
+        Product::create($request->all());
+        return redirect()->route('products.index')->with('success', 'product created successfully');
+
+
+   
     }
     public function edit($id)
 {
@@ -39,6 +49,7 @@ public function update(Request $request, $id)
     public function delete(Request $request, $id){
         $product = Product::findOrFail($id);
         $product->delete();
-        return 204;
+        return redirect()->route('products.index')->with('success', 'product deleted successfully');
+
     }
 }
