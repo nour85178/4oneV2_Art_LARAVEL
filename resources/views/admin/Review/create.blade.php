@@ -41,7 +41,8 @@
 
                 <div class="form-group">
                     <label for="PosNeg">PosNeg:</label>
-                    <input type="checkbox" class="form-check-input" name="PosNeg" id="PosNeg" value="1">
+                    <input type="checkbox" class="form-check-input" name="PosNeg" id="PosNeg" onclick="toggleCheckboxValue(this)">
+<input type="hidden" name="PosNeg" value="0">
                 </div>
 
                 <div class="text-center">
@@ -51,5 +52,10 @@
         </div>
     </div>
 </div>
-
+<script>
+    function toggleCheckboxValue(checkbox) {
+        var hiddenInput = document.querySelector('input[name="PosNeg"]');
+        hiddenInput.value = checkbox.checked ? '1' : '0';
+    }
+</script>
 @endsection
