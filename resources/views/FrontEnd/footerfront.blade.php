@@ -5,8 +5,8 @@
             <div class="footer_1 clearfix">
                 <div class="col-sm-3">
                     <div class="footer_1i clearfix">
-                        <h1 class="mgt"><a href="index.html"><span class="col_1">Art</span> Gallery</a></h1>
-                        <p>Sed quia consequuntur magni dolor qui ratione porro tatem sequineque porro.</p>
+                        <h1 class="mgt"><a href="index.html"><span class="col_1">Art</span> Quest</a></h1>
+                        <p>Discover, Bid, Collect: Your Art Journey Begins with Art Quest</p>
                         <ul class="social-network social-circle">
                             <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
                             <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
@@ -23,7 +23,6 @@
                         <h6><a href="#">Terms And Conditions</a></h6>
                         <h6><a href="#">About Us</a></h6>
                         <h6><a href="#">Contact Us</a></h6>
-                        <h6><a href="#">Sitemap</a></h6>
                         <h6><a href="#">My Account</a></h6>
                     </div>
                 </div>
@@ -41,11 +40,10 @@
                 <div class="col-sm-3">
                     <div class="footer_1i clearfix">
                         <h4>Contact Us</h4>
-                        <h6><a href="#"><i class="fa fa-map-marker col_1"></i> 35 Bay Semper Drive Ironstock, HB
-                                10234, United States</a></h6>
+                        <h6><a href="#"><i class="fa fa-map-marker col_1"></i> Esprit Theni Doura 3al Imin</a></h6>
                         <h6><a href="#"><i class="fa fa-phone col_1"></i> 0123456789</a></h6>
                         <h6><a href="#"><i class="fa fa-fax col_1"></i> 0123456789</a></h6>
-                        <h6><a href="#"><i class="fa fa-envelope col_1"></i> info@gmail.com</a></h6>
+                        <h6><a href="#"><i class="fa fa-envelope col_1"></i> 4oneV2@gmail.com</a></h6>
                     </div>
                 </div>
             </div>
@@ -71,7 +69,7 @@
                 </div>
                 <div class="col-sm-7 space_left">
                     <div class="footer_bl  text-right clearfix">
-                        <p class="mgt">© 2013 Your Website Name. All Rights Reserved | Design by <a class="col_1" href="http://www.templateonweb.com">TemplateOnWeb</a></p>
+                        <p class="mgt">© 2023 App Quest. All Rights Reserved | Design by <a class="col_1" href="http://www.templateonweb.com">4OneV2</a></p>
                     </div>
                 </div>
             </div>

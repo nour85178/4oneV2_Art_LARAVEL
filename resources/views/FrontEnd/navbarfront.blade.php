@@ -9,10 +9,11 @@
                             <li class="dropdown">
                                 <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">English<span class="caret"></span></a>
                                 <ul class="dropdown-menu drop_1" role="menu">
-                                    <li><a  href="#">Italiano</a></li>
-                                    <li><a href="#">Espanol</a></li>
-                                    <li><a class="border_none" href="#">Francias</a></li>
+                                    <li><a href="#" class="lang-switch" data-lang="en">English</a></li>
+                                    <li><a href="#" class="lang-switch" data-lang="es">Español</a></li>
+                                    <li><a href="#" class="lang-switch" data-lang="fr">Français</a></li>
                                 </ul>
+
                             </li>
                             <li class="dropdown">
                                 <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Usd<span class="caret"></span></a>
@@ -21,10 +22,9 @@
                                     <li><a class="border_none" href="#">Usd</a></li>
                                 </ul>
                             </li>
-                            <li><a class="m_tag" href="login.html"><i class="fa fa-lock"></i> Sign In</a></li>
-                            <li><a class="m_tag" href="contact.html"><i class="fa fa-phone"></i> Contact</a></li>
+                            <li><a class="m_tag border_none"  href="{{ route('products.index') }}"><i class="fa fa-bookmark-o"></i> Produit</a></li>
+                            <li><a class="m_tag" href="#"><i class="fa fa-phone"></i> Request</a></li>
                             <li><a class="m_tag" href="#"><i class="fa fa-sitemap"></i> Sitemap</a></li>
-                            <li><a class="m_tag border_none" href="#"><i class="fa fa-bookmark-o"></i> Bookmark</a></li>
                         </ul>
                     </div>
                 </div>
@@ -89,3 +89,4 @@
         </div>
     </div>
 </section>
+

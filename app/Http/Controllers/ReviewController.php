@@ -21,6 +21,10 @@ class ReviewController extends Controller
     {
         return view('admin.Review.create');
     }
+    public function test()
+    {
+        return view('admin.Review.review');
+    }
     public function store(Request $request){
          Review::create($request->all());
         return redirect()->route('reviews.index')->with('success', 'Review Added successfully');

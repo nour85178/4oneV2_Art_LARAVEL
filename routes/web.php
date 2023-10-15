@@ -37,14 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('requests/{request}/show', [RequestController::class, 'show'])->name('requests.show');
     Route::delete('requests/{request}/delete', [RequestController::class, 'delete'])->name('requests.delete');
     Route::post('requests/store', [RequestController::class, 'store'])->name('requests.store');
-    Route::put('requests/{request}/update', [RequestController::class, 'update'])->name('requests.update');
-    Route::resource('products', ProductController::class);
-    Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::put('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    Route::get('products/{product}/show', [ProductController::class, 'show'])->name('products.show');
-    Route::delete('products/{product}/delete', [ProductController::class, 'delete'])->name('products.delete');
-    Route::post('products/store', [ProductController::class, 'store'])->name('products.store');
-    Route::put('products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+
     Route::get('/commandes', [App\Http\Controllers\CommandeController::class, 'index'])->name('commandes.index');
     Route::get('/commandes/create', [App\Http\Controllers\CommandeController::class, 'create'])->name('commandes.create');
     Route::post('/commandes', [App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');
@@ -55,12 +48,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'client'])->group(function () {
-    Route::get('/front', [App\Http\Controllers\TemplateController::class, 'index']);
     //eli bech yzid urelet fel front yzidhom te7t hedhi ya bbiet
+    Route::get('review', [ReviewController::class, 'test']);
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::post('/storeprod', [\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+
+    Route::get('addprod', [\App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+    Route::put('requests/{request}/update', [RequestController::class, 'update'])->name('requests.update');
+    Route::put('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('{product}/show', [ProductController::class, 'show'])->name('products.show');
+    Route::delete('products/{product}/delete', [ProductController::class, 'delete'])->name('products.delete');
+    Route::put('products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+
+
 });
 Route::middleware(['auth', 'artist'])->group(function () {
     Route::get('/frontartist', [App\Http\Controllers\ArtistFrontController::class, 'index']);
-    //eli bech yzid urelet fel front yzidhom te7t hedhi ya bbiet
+
 });
 Auth::routes();
 

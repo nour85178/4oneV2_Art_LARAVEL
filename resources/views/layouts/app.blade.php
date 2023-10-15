@@ -75,4 +75,6 @@
         </main>
     </div>
 </body>
+<script src="{{ mix('js/lang-switch.js') }}"></script>
+
 </html>

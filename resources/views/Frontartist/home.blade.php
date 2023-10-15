@@ -1,4 +1,4 @@
 
-@include('FrontEnd.navbarfront')
+@include('Frontartist.navbarfront')
 
-@include('FrontEnd.footerfront')
+@include('Frontartist.footerfront')

@@ -1,86 +1,88 @@
-
-<section id="top">
+@extends('Frontartist.style')
+<div class="banner_bg_main">
+    <!-- header top section start -->
     <div class="container">
-        <div class="row">
-            <div class="top_1 clearfix">
-                <div class="col-sm-8">
-                    <div class="top_1l clearfix">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">English<span class="caret"></span></a>
-                                <ul class="dropdown-menu drop_1" role="menu">
-                                    <li><a  href="#">Italiano</a></li>
-                                    <li><a href="#">Espanol</a></li>
-                                    <li><a class="border_none" href="#">Francias</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Usd<span class="caret"></span></a>
-                                <ul class="dropdown-menu drop_1" role="menu">
-                                    <li><a  href="#">Eur</a></li>
-                                    <li><a class="border_none" href="#">Usd</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="m_tag" href="login.html"><i class="fa fa-lock"></i> Sign In</a></li>
-                            <li><a class="m_tag" href="contact.html"><i class="fa fa-phone"></i> Contact</a></li>
-                            <li><a class="m_tag" href="#"><i class="fa fa-sitemap"></i> Sitemap</a></li>
-                            <li><a class="m_tag border_none" href="#"><i class="fa fa-bookmark-o"></i> Bookmark</a></li>
+        <div class="header_section_top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_menu">
+                        <ul>
+                            <li><a href="#">Produit</a></li>
+                            <li><a href="#">Artiste</a></li>
+                            <li><a href="#">New Releases</a></li>
+                            <li><a href="#">Today's Deals</a></li>
+                            <li><a href="#">Customer Service</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="top_1l clearfix">
-                        <ul class="nav navbar-nav">
-                            <li><div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="input-group-btn">
-						<button class="btn btn-primary" type="button">
-							<i class="fa fa-search"></i></button>
-					</span>
-                                </div></li>
-                            <li class="dropdown">
-                                <a class="m_tag border_none" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-bag"></i></a>
-                                <ul class="dropdown-menu drop_2" role="menu">
-                                    <li>
-                                        <div class="drop_1i clearfix">
-                                            <div class="col-sm-6">
-                                                <div class="drop_1il clearfix"><h5 class="mgt">2 ITEMS</h5></div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="drop_1il text-right clearfix"><h5 class="mgt"><a href="#">VIEW CART</a></h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="drop_1i1 clearfix">
-                                            <div class="col-sm-8">
-                                                <div class="drop_1i1l clearfix"><h6 class="mgt bold"><a href="#">Nulla Quis</a> <br> <span class="normal col_2">1x - $89.00</span> <br> <span><i class="fa fa-remove"></i></span></h6></div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="drop_1i1r text-right clearfix"><a href="#"><img src="img/1.jpg" class="iw" alt="abc"></a></div>
-                                            </div>
-                                        </div>
-                                        <div class="drop_1i1 clearfix">
-                                            <div class="col-sm-8">
-                                                <div class="drop_1i1l clearfix"><h6 class="mgt bold"><a href="#">Eget Nulla</a> <br> <span class="normal col_2">1x - $49.00</span> <br> <span><i class="fa fa-remove"></i></span></h6></div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="drop_1i1r text-right clearfix"><a href="#"><img src="img/2.jpg" class="iw" alt="abc"></a></div>
-                                            </div>
-                                        </div>
-                                        <div class="drop_1i2 clearfix">
-                                            <div class="col-sm-6">
-                                                <div class="drop_1il clearfix"><h5 class="mgt">TOTAL</h5></div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="drop_1il text-right clearfix"><h5 class="mgt">$138.00</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="drop_1i3 text-center clearfix">
-                                            <div class="col-sm-12">
-                                                <h5><a class="button" href="#">CHECKOUT</a></h5>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- header top section start -->
+    <!-- logo section start -->
+    <div class="logo_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="logo"><a href="index.html"><img src="Client/images/logo.png"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- logo section end -->
+    <!-- header section start -->
+    <div class="header_section">
+        <div class="container">
+            <div class="containt_main">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="index.html">Home</a>
+                    <a href="fashion.html">Produits</a>
+                    <a href="electronic.html"></a>
+                    <a href="jewellery.html"></a>
+                </div>
+                <span class="toggle_icon" onclick="openNav()"><img src="Client/images/toggle-icon.png"></span>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+                <div class="main">
+                    <!-- Another variation with a button -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="header_box">
+                    <div class="lang_box ">
+                        <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                            <img src="Client/images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu ">
+                            <a href="#" class="dropdown-item">
+                                <img src="Client/images/flag-france.png" class="mr-2" alt="flag">
+                                French
+                            </a>
+                        </div>
+                    </div>
+                    <div class="login_menu">
+                        <ul>
+                            <li><a href="#">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    <span class="padding_10">Cart</span></a>
+                            </li>
+                            <li><a href="#">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span class="padding_10">Cart</span></a>
                             </li>
                         </ul>
                     </div>
@@ -88,4 +90,45 @@
             </div>
         </div>
     </div>
-</section>
+    <!-- header section end -->
+    <!-- banner section start -->
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                                <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                                <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                                <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- banner section end -->
+</div>
