@@ -37,4 +37,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    public function participations()
+    {
+        return $this->hasMany(Participation::class);
+    }
+    public function hasParticipatedInBid(Product $product)
+    {
+        return $this->participations()->where('product_id', $product->id)->exists();
+    }
+    public function wonProducts()
+    {
+        return $this->hasMany(Product::class, 'winner_id');
+    }
 }

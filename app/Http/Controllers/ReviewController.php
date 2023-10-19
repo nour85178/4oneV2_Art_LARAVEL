@@ -27,7 +27,6 @@ class ReviewController extends Controller
     }
     public function store(Request $request){
          Review::create($request->all());
-        return redirect()->route('reviews.index')->with('success', 'Review Added successfully');
 
     }
     public function edit($id)
@@ -47,5 +46,10 @@ class ReviewController extends Controller
         $review->delete();
         return redirect()->route('reviews.index')->with('success', 'Review Deleted successfully');
     }
+    public function testReview()
+    {
+        $reviews = Review::where('product_id',1)->get();
+        return view('FrontClient.reviewf', compact('reviews'));
 
+    }
 }

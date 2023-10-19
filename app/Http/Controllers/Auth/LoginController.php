@@ -23,7 +23,7 @@ class LoginController extends Controller
         if ($user->role === 'admin') {
             return redirect('/dashboard');
         } else if ($user->role === 'client') {
-            return redirect('/front');
+            return redirect('/style');
         } else {
             return redirect('/frontartist');
         }

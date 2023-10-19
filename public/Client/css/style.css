@@ -1,4 +1,3 @@
---------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
 
 @import url(animate.min.css);
@@ -351,6 +350,19 @@ button {
     order: 2;
     display: flex;
 }
+/* Define a flex container for artist users */
+.artist-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+}
+
+/* Style for individual artist boxes */
+.artist-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 250px; /* Adjust the width as needed */
+}
 
 .dropdown,
 .dropleft,
@@ -576,6 +588,7 @@ a:hover {
     padding: 20px;
     box-shadow: 0px 0 30px 10px #f0f0f0;
     margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 .shirt_text {
@@ -696,20 +709,21 @@ a:hover {
     top: 105%;
 }
 
-#electronic_main_slider .carousel-control-next,
-#electronic_main_slider .carousel-control-prev {
+#originalCarousel .carousel-control-next,
+#originalCarousel .carousel-control-prev {
     width: 55px;
     height: 55px;
     background-color: #30302e;
     opacity: 1;
     font-size: 30px;
     color: #ffffff;
+    top: 75%
 }
 
-#electronic_main_slider .carousel-control-next:focus,
-#electronic_main_slider .carousel-control-next:hover,
-#electronic_main_slider .carousel-control-prev:focus,
-#electronic_main_slider .carousel-control-prev:hover {
+#originalCarousel .carousel-control-next:focus,
+#originalCarousel .carousel-control-next:hover,
+#originalCarousel .carousel-control-prev:focus,
+#originalCarousel .carousel-control-prev:hover {
     color: #fff;
     background-color: #f26522;
 }
@@ -743,20 +757,67 @@ a:hover {
     top: 75%;
 }
 
-#jewellery_main_slider .carousel-control-next,
-#jewellery_main_slider .carousel-control-prev {
+#reproduiteCarousel .carousel-control-next,
+#reproduiteCarousel .carousel-control-prev {
     width: 55px;
     height: 55px;
     background-color: #30302e;
     opacity: 1;
     font-size: 30px;
     color: #ffffff;
+    top: 75%;
+}
+/* Add custom styles for the product details and review form */
+.product-details {
+    float: left;
+    width: 50%; /* Adjust the width as needed */
 }
 
-#jewellery_main_slider .carousel-control-next:focus,
-#jewellery_main_slider .carousel-control-next:hover,
-#jewellery_main_slider .carousel-control-prev:focus,
-#jewellery_main_slider .carousel-control-prev:hover {
+.add-review-form {
+    float: right;
+    width: 50%; /* Adjust the width as needed */
+    margin-top: -400px;
+}
+
+/* Add some spacing between the two sections */
+.product-details {
+    margin-right: 20px;
+}
+
+/* Style the review form */
+.add-review-form .card {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-review-form .card-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.add-review-form label {
+    font-weight: bold;
+}
+
+.add-review-form .form-group {
+    margin-bottom: 20px;
+}
+
+.add-review-form button {
+    background-color: #f26522;
+    color: #fff;
+}
+
+.add-review-form button:hover {
+    background-color: #e44e1d;
+}
+
+#reproduiteCarousel .carousel-control-next:focus,
+#reproduiteCarousel .carousel-control-next:hover,
+#reproduiteCarousel .carousel-control-prev:focus,
+#reproduiteCarousel .carousel-control-prev:hover {
     color: #fff;
     background-color: #f26522;
 }

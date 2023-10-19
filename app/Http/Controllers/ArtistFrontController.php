@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class ArtistFrontController extends Controller
 {
    public function index(){
-       return view('Frontartist.home');
+       return view('FrontClient.home');
    }
 }

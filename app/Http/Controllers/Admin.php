@@ -73,4 +73,10 @@ class Admin extends Controller
 
         return redirect()->route('users.index')->with('success', 'Utilisateur supprimé avec succès.');
     }
+    public function showArtistUsers()
+    {
+        $artistUsers = User::where('role', 'artist')->get();
+        return view('FrontClient.artist-users', compact('artistUsers'));
+    }
+
 }

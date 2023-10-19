@@ -11,7 +11,7 @@ class Review extends Model
 
     protected $table = 'review';
     protected $fillable = [
-        'description', 'note', 'image', 'like','dislike','PosNeg','title'
+        'description', 'note', 'image', 'like','dislike','PosNeg','Title','product_id'
     ];
     public function user()
     {

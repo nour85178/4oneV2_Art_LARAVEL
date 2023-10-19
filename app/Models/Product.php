@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'titre', 'description', 'price', 'image','category'
+        'titre', 'description', 'price', 'image','category','bidding_enabled','winner_id'
     ];
     public function commande()
     {
@@ -18,8 +18,25 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function review()
+    public function reviews()
     {
-        return $this->hasOne(Review::class);
+        return $this->hasMany(Review::class);
+    }
+    public function categorie()
+    {
+        return $this->belongsTo(Categorie::class);
+    }
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+    public function currentBidAmount()
+    {
+        $highestBid = $this->bids->max('amount');
+        return $highestBid ? $highestBid : $this->price;
+    }
+    public function winner()
+    {
+        return $this->belongsTo(User::class, 'winner_id');
     }
 }
