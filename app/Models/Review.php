@@ -11,7 +11,7 @@ class Review extends Model
 
     protected $table = 'review';
     protected $fillable = [
-        'description', 'note', 'image', 'like','dislike','PosNeg','Title','product_id'
+        'description', 'note', 'image', 'like','dislike','PosNeg','title','product_id'
     ];
     public function user()
     {
@@ -20,5 +20,9 @@ class Review extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

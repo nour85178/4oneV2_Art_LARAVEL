@@ -18,10 +18,11 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function reviews()
+    public function review()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'product_id');
     }
+
     public function categorie()
     {
         return $this->belongsTo(Categorie::class);

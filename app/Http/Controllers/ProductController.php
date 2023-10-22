@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Categorie;
 use App\Notifications\BidWinnerNotification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BiddingStoppedEmail;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\Models\Tag;
 class ProductController extends Controller
 {
 
@@ -91,17 +93,24 @@ public function update(Request $request, $id)
         if ($product->categorie->name === 'Original') {
             $product->update(['bidding_enabled' => false]);
 
-
             $winningBid = $product->bids()->orderBy('amount', 'desc')->first();
 
             if ($winningBid) {
                 $product->update(['winner_id' => $winningBid->user_id]);
-                return response()->json(['success' => true, 'winner' => $winningBid->user_id]);
-                $winner = User::find($winningBid->user_id);
-                \Log::info('Winner User: ' . $winner);
-                $winner->notify(new BidWinnerNotification($product));
-            } else {
+                $user = $winningBid->user; // Access the user associated with the winning bid
+                $winnerEmail = $user->email;
 
+                // Send an email notification to the winning user
+                Mail::to($winnerEmail)->send(new BiddingStoppedEmail($product));
+
+                // Log the winner's email for debugging
+                \Log::info('Winner User Email: ' . $winnerEmail);
+
+                // You can also log the winner user for debugging
+                \Log::info('Winner User: ' . $user);
+
+                return response()->json(['success' => true, 'winner' => $winningBid->user_id]);
+            } else {
                 return response()->json(['success' => true, 'winner' => $winningBid->user_id]);
             }
         }
@@ -125,13 +134,11 @@ public function update(Request $request, $id)
         return view('FrontClient.home', compact('originalProducts', 'reproduiteProducts'));
     }
     public function getprod($id) {
-
-
         $user = Auth::user();
         $product = Product::findOrFail($id);
         $reviews = Review::where('product_id', $id)->get();
-
-        return view('FrontClient.getprod', compact('product','user', 'reviews'));
+        $tags = Tag::all(); // Fetch available tags
+        return view('FrontClient.getprod', compact('product', 'user', 'reviews', 'tags'));
     }
     public function portfolio(User $artist)
     {

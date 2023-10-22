@@ -30,18 +30,14 @@
 
                     <td>
                         <a href="{{ route('reviews.show', $review->id) }}" class="btn btn-primary">View</a>
-                        <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-info">Edit</a>
-                        <form action="{{ route('reviews.delete', $review->id) }}" method="POST" style="display: inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+
+
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
 
-        <a href="{{ route('reviews.create') }}" class="btn btn-success">Create New Review</a>
+
     </div>
 @endsection
