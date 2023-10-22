@@ -7,9 +7,9 @@
                 <div class="col-sm-12">
                     <div class="custom_menu">
                         <ul>
-                            <li><a href="#">Produit</a></li>
+                            <li><a href="{{ route('produits') }}">Produit</a></li>
                             <li><a href="{{ route('artist-users') }}">Artiste</a></li>
-                            <li><a href="#">New Releases</a></li>
+                            <li><a href="{{ route('requests-list') }}">Requests</a></li>
                             <li><a href="#">Today's Deals</a></li>
                             <li><a href="#">Customer Service</a></li>
                         </ul>
@@ -46,11 +46,12 @@
                     <a href="jewellery.html"></a>
                 </div>
                 <span class="toggle_icon" onclick="openNav()">
-    <img src="{{ asset('Client/images/toggle-icon.png') }}">
-</span>
+                    <img src="{{ asset('Client/images/toggle-icon.png') }}">
+                </span>
 
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Action</a>
@@ -63,7 +64,8 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search this blog">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                            <button class="btn btn-secondary" type="button"
+                                style="background-color: #f26522; border-color:#f26522 ">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
@@ -72,7 +74,9 @@
                 <div class="header_box">
                     <div class="lang_box ">
                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
-                            <i><img src="{{ asset('Client/images/flag-uk.png') }}" alt="flag" class="mr-2" title="United Kingdom"></i> English <i class="fa fa-angle-down ml-2" aria-hidden="true">
+                            <i><img src="{{ asset('Client/images/flag-uk.png') }}" alt="flag" class="mr-2"
+                                    title="United Kingdom"></i> English <i class="fa fa-angle-down ml-2"
+                                aria-hidden="true">
                             </i>
                         </a>
 
@@ -109,7 +113,8 @@
                     <div class="carousel-item active">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h1 class="banner_taital">Art Quest <br>Discover, Bid, Collect: Your Art Journey Begins with Art Quest</h1>
+                                <h1 class="banner_taital">Art Quest <br>Discover, Bid, Collect: Your Art Journey Begins
+                                    with Art Quest</h1>
 
                             </div>
                         </div>

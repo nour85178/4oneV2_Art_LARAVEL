@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use App\Models\Categorie;
+use App\Models\Request as ModelsRequest;
 use App\Notifications\BidWinnerNotification;
 use App\Models\User;
 use App\Models\Review;
@@ -28,7 +30,13 @@ class ProductController extends Controller
         return view('FrontArtiste.addprod');
     }
 
-    public function show($id) {
+    public function createCustomProd(ModelsRequest $requestt)
+    {
+        return view('FrontArtiste.addCustomProduct', compact('requestt'));
+    }
+
+    public function show($id)
+    {
 
         $user = Auth::user();
 
@@ -67,24 +75,60 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
-    public function edit($id)
-{
-    $product = Product::findOrFail($id);
-    $hasBids = $product->bids()->exists();
-    return view('FrontArtiste.edit', compact('product', 'hasBids'));
-}
-public function update(Request $request, $id)
-{
-    $product = Product::findOrFail($id);
-    $product->update($request->all());
-    return redirect()->route('products.index')->with('success', 'Product updated successfully');
-}
 
-    public function delete(Request $request, $id){
+    public function storeCustomProd(Request $request, ModelsRequest $requestt)
+    {
+        $request->validate([
+            'titre' => 'required',
+            'description' => 'required',
+            'image' => 'required|image',
+            'category' => 'required',
+            'category_type' => 'required|in:Original,Reproduit',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->storeAs('public/images', $request->file('image')->getClientOriginalName());
+            $imagePath = str_replace('public/', '', $imagePath);
+        }
+
+        $user = Auth::user();
+        $product = new Product();
+        $product->titre = $request->input('titre');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->image = $imagePath;
+        $product->category = $request->input('category');
+        $categoryType = $request->input('category_type');
+        $category = Categorie::where('name', $categoryType)->firstOrFail();
+        $product->categorie_id = $category->id;
+        $product->user()->associate($user);
+        $product->client()->associate($requestt->user);
+        $requestt->etat = 'prêt';
+        $product->save();
+        $requestt->product()->associate($product);
+        $requestt->save();
+
+
+        return redirect()->route('products.index')->with('success', 'Product created successfully');
+    }
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $hasBids = $product->bids()->exists();
+        return view('FrontArtiste.edit', compact('product', 'hasBids'));
+    }
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+    }
+
+    public function delete(Request $request, $id)
+    {
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('products.index')->with('success', 'product deleted successfully');
-
     }
     public function stopBidding(Product $product)
     {
@@ -124,14 +168,15 @@ public function update(Request $request, $id)
 
         return view('FrontClient.home', compact('originalProducts', 'reproduiteProducts'));
     }
-    public function getprod($id) {
+    public function getprod($id)
+    {
 
 
         $user = Auth::user();
         $product = Product::findOrFail($id);
         $reviews = Review::where('product_id', $id)->get();
 
-        return view('FrontClient.getprod', compact('product','user', 'reviews'));
+        return view('FrontClient.getprod', compact('product', 'user', 'reviews'));
     }
     public function portfolio(User $artist)
     {

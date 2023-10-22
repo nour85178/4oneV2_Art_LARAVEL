@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'titre', 'description', 'price', 'image','category','bidding_enabled','winner_id'
+        'titre', 'description', 'price', 'image', 'category', 'bidding_enabled', 'winner_id', 'client_id'
     ];
     public function commande()
     {
@@ -17,6 +17,10 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
     }
     public function reviews()
     {
