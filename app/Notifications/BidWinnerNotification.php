@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
+
 
 class BidWinnerNotification extends Notification
 {
@@ -38,7 +40,8 @@ class BidWinnerNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        \Log::info('Preparing to send email notification to: ' . $notifiable->email);
+        Log::info('Notification toMail method is executing.');
+        dd('Notification toMail method is executing.');
 
         return (new MailMessage)
             ->line('Congratulations! You have won the bid for a product.')

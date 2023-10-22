@@ -1,4 +1,4 @@
-<!-- resources/views/admin/users/index.blade.php -->
+<!-- resources/views/admin/users/client_index.blade.php -->
 
 @extends('layout.layout')
 

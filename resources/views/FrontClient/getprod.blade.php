@@ -63,8 +63,18 @@
             <form action="{{ route('reviews.store') }}" method="POST" onsubmit="return validateForm()">
                 @csrf
                 <div class="form-group">
-                    <label for="Title">Title:</label>
-                    <input type="text" class="form-control" name="Title" id="Title">
+                    <label>Select Tags:</label>
+                    @foreach ($tags as $tag)
+                        <label>
+                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}">
+                            <span style="background-color: {{ $tag->color }}; padding: 2px 6px; border-radius: 4px; margin-right: 5px;"></span>
+                            {{ $tag->name }}
+                        </label>
+                    @endforeach
+                </div>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" name="title" id="title">
                     <small id="titleError" class="text-danger"></small>
                 </div>
 
@@ -100,14 +110,23 @@
     </div>
     </div>
         </div>
+    <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
     <div class="card mt-4">
         <div class="card-body">
             <h3 class="card-title">Product Reviews</h3>
-            @if (optional($product->reviews)->count() > 0)
-                @foreach ($product->reviews as $review)
+
+            @if (optional($product->review)->count() > 0)
+                @foreach ($product->review as $review)
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>Title:</strong> {{ $review->Title }}
+
+                            <strong>Title:</strong> {{ $review->title }}
                             <br>
                             <strong>Description:</strong> {{ $review->description }}
                             <br>
@@ -126,6 +145,9 @@
                             <img src="{{ asset('storage/images/' . $review->image) }}" style="width: 200px; height: 150px;" alt="{{ $review->titre }}">
 
                         </li>
+                        <a href="#" class="edit-review-link" data-review-id="{{ $review->id }}">
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
                     </ul>
                 @endforeach
             @else
@@ -197,5 +219,21 @@
                         return true;
                     }
                 </script>
+<script>
+    $(document).ready(function() {
+        // Handle the "Edit" link click event
+        $('.edit-review-link').click(function(event) {
+            event.preventDefault();
+            const reviewId = $(this).data('review-id');
+            const route = "{{ route('reviews.edit', ':id') }}".replace(':id', reviewId);
+
+            // Fetch the edit form via AJAX and load it into the modal
+            $.get(route, function(data) {
+                $('#editReviewModal .modal-content').html(data);
+                $('#editReviewModal').modal('show');
+            });
+        });
+    });
+</script>
 
 

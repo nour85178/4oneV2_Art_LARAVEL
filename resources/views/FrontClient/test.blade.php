@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Test Email</title>
-</head>
-<body>
-<h1>This is a test email to verify your email configuration.</h1>
-<p>Thank you for using our application!</p>
-</body>
-</html>
+@component('mail::message')
+    # Bidding Stopped for Product: {{ $product->titre }}
+
+    Congratulations! The bidding for the following product has been stopped.
+
+    **Product Title**: {{ $product->titre }}
+    **Price**: ${{ $product->price }}
+
+    @component('mail::button', ['url' => route('products.getprod', $product->id)])
+        View Product
+    @endcomponent
+
+    Thank you for using our platform!
+
+@endcomponent

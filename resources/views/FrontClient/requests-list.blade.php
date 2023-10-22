@@ -29,7 +29,7 @@
                             </td>
                             <td>
                                 @if ($request->etat === 'prêt')
-                                    <a href="{{ route('custom-product', $request) }}">Réclamez votre produit</a>
+                                    <a href="{{ route('custom-product', $request) }}">Afficher votre produit</a>
                                 @endif
                             </td>
                         </tr>

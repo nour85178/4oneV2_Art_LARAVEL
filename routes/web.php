@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Livewire\Chat\CreateChat;
+use App\Http\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BidController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Admin;
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +31,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/users/create', [App\Http\Controllers\Admin::class, 'create'])->name('users.create');
     Route::post('/users/store', [App\Http\Controllers\Admin::class, 'store'])->name('users.store');
     Route::resource('reviews', ReviewController::class);
-    Route::get('reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
-    Route::put('reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
     Route::get('reviews/{review}/show', [ReviewController::class, 'show'])->name('reviews.show');
-    Route::delete('reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
-    Route::put('reviews/{review}/update', [ReviewController::class, 'update'])->name('reviews.update');
     Route::resource('requests', RequestController::class);
 
 
@@ -45,6 +44,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/commandes/{commande}/edit', [App\Http\Controllers\CommandeController::class, 'edit'])->name('commandes.edit');
     Route::put('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'update'])->name('commandes.update');
     Route::delete('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'delete'])->name('commandes.delete');
+    Route::get('tagschart', [ReviewController::class, 'tagsChart'])->name('tags.chart');
+    Route::get('averagenotechart', [ReviewController::class, 'averageNoteChart'])->name('average.note.chart');
+    Route::get('/charts', [ReviewController::class, 'combinedCharts'])->name('charts');
 });
 
 Route::middleware(['auth', 'artist'])->group(function () {
@@ -83,8 +85,21 @@ Route::middleware(['auth', 'client'])->group(function () {
     });
     Route::get('/test', [ReviewController::class, 'testReview'])->name('reviews.review');
     Route::post('reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('reviews/{review}/edit',  [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::patch('reviews/{review}',  [ReviewController::class, 'update'])->name('reviews.update');
+    Route::get('/chattt', [\App\Http\Controllers\PusherController::class, 'index']);
+    Route::post('/broadcast', [\App\Http\Controllers\PusherController::class, 'broadcast'])->name('broadcast');
+    Route::post('/receive', [\App\Http\Controllers\PusherController::class, 'receive'])->name('receive');
 });
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// routes/web.php
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat/send/{receiver}', [ChatController::class, 'sendMessage'])->name('chat.send');
+    Route::get('/chat/{artist}', [ChatController::class, 'loadConversation'])->name('chat.conversation');
+});
