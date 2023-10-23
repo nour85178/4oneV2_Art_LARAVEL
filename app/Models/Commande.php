@@ -9,8 +9,26 @@ class Commande extends Model
 {
     protected $fillable = [
         'etat',
-        'Total',
         'methode_paiement',
-        'Adresse'
+        'panier_id',
+        'livraison_id'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+    public function livraison()
+    {
+        return $this->hasOne(Livraison::class); // Define the relationship
+    }
+    public function panier()
+    {
+        return $this->hasOne(panier::class); // Define the relationship
+    }
+    
+
 }

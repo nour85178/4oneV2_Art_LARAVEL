@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "doctrine/dbal": "^3.7",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
-        "nunomaduro/laravel-console-task": "^1.7"
+        "laravelcollective/html": "^6.4",
+        "nunomaduro/laravel-console-task": "^1.7",
+        "spatie/laravel-translation-loader": "^2.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

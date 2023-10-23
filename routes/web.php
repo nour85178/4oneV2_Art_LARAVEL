@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CommandeController;
-
-
-
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BidController;
+use App\Http\Controllers\Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,35 +20,86 @@ Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Dashboard::class, 'index']);
-    //eli bech yzid urelet fel back yzidhom te7t hedhi ya bbiet
+    Route::get('/users', [App\Http\Controllers\Admin::class,'index'])->name('users.index');
+    Route::get('/users/{user}/edit', [App\Http\Controllers\Admin::class,'edit'])->name('users.edit');
+    Route::put('/users/{user}/update', [App\Http\Controllers\Admin::class,'update'])->name('users.update');
+    Route::delete('/users/{user}/delete', [App\Http\Controllers\Admin::class,'destroy'])->name('users.destroy');
+    Route::get('/users/create', [App\Http\Controllers\Admin::class,'create'])->name('users.create');
+    Route::post('/users/store', [App\Http\Controllers\Admin::class,'store'])->name('users.store');
+    Route::resource('reviews', ReviewController::class);
+    Route::get('reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::put('reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::get('reviews/{review}/show', [ReviewController::class, 'show'])->name('reviews.show');
+    Route::delete('reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
+    Route::put('reviews/{review}/update', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::resource('requests', RequestController::class);
+    Route::get('requests/create', [RequestController::class, 'create'])->name('requests.create');
+    Route::put('requests/{request}/edit', [RequestController::class, 'edit'])->name('requests.edit');
+    Route::get('requests/{request}/show', [RequestController::class, 'show'])->name('requests.show');
+    Route::delete('requests/{request}/delete', [RequestController::class, 'delete'])->name('requests.delete');
+    Route::post('requests/store', [RequestController::class, 'store'])->name('requests.store');
+    Route::get('/commandes', [App\Http\Controllers\CommandeController::class, 'index'])->name('commandes.index');
+    Route::get('/commandes/create', [App\Http\Controllers\CommandeController::class, 'create'])->name('commandes.create');
+    Route::post('/commandes', [App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');
+    Route::get('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'show'])->name('commandes.show');
+    Route::get('/commandes/{commande}/edit', [App\Http\Controllers\CommandeController::class, 'edit'])->name('commandes.edit');
+    Route::put('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'update'])->name('commandes.update');
+    Route::delete('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'delete'])->name('commandes.delete');
 });
 
-Route::middleware(['auth', 'client'])->group(function () {
-    Route::get('/front', [App\Http\Controllers\TemplateController::class, 'index']);
+Route::middleware(['auth', 'artist'])->group(function () {
     //eli bech yzid urelet fel front yzidhom te7t hedhi ya bbiet
-});
+    Route::get('review', [ReviewController::class, 'test']);
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::post('/storeprod', [\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+    Route::get('addprod', [\App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+    Route::put('requests/{request}/update', [RequestController::class, 'update'])->name('requests.update');
+    Route::put('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('{product}/show', [ProductController::class, 'show'])->name('products.show');
+    Route::delete('products/{product}/delete', [ProductController::class, 'delete'])->name('products.delete');
+    Route::put('products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+    Route::put('/products/{product}/stop-bidding', [ProductController::class, 'stopBidding'])->name('products.stopBidding');
 
+    
+
+});
+Route::middleware(['auth', 'client'])->group(function () {
+    Route::get('/frontartist', [App\Http\Controllers\ArtistFrontController::class, 'index']);
+    Route::get('/style', [App\Http\Controllers\ProductController::class, 'displayStyledProducts'])->name('home');
+    Route::get('{product}/getprod', [ProductController::class, 'getprod'])->name('products.getprod');
+    Route::post('/bids/place/{product}', [\App\Http\Controllers\BidController::class, 'placeBid'])->name('bids.place');
+    Route::post('/bids/participate/{product}', [BidController::class, 'participate'])->name('bids.participate');
+    Route::get('/bidding' , [BidController::class, 'showBiddingInterface']);
+    Route::get('/artistes', [Admin::class, 'showArtistUsers'])->name('artist-users');
+    Route::get('artist-portfolio/{artist}', [ProductController::class, 'portfolio'])->name('artist-portfolio');
+    Route::get('/send', function () {
+        \Mail::to('anistagoug@gmail.com')->send(new \App\Mail\TestEmail());
+        return 'Test email sent!';
+    
+        
+
+    });
+    Route::get('/test', [ReviewController::class, 'testReview'])->name('reviews.review');
+    Route::post('reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/panier', [App\Http\Controllers\PanierController::class, 'index'])->name('panier.index');
+    Route::post('/panier/add', [App\Http\Controllers\PanierController::class, 'addProduct'])->name('panier.addProduct');
+    Route::delete('/panier/removeProduct', [App\Http\Controllers\PanierController::class, 'removeProduct'])->name('panier.removeProduct');
+    Route::get('/livraisons/create', [App\Http\Controllers\LivraisonController::class, 'create'])->name('livraison.create');
+    Route::post('/livraisons', [App\Http\Controllers\LivraisonController::class, 'store'])->name('livraison.store');
+
+    Route::get('/livraisons/last', [App\Http\Controllers\LivraisonController::class, 'showLastLivraison'])->name('livraison.showLast');
+
+    Route::post('/confirmCommande', [App\Http\Controllers\LivraisonController::class, 'confirmCommande'])->name('livraison.confirmCommande');
+
+    Route::get('/showLastCommande', [App\Http\Controllers\CommandeController::class, 'showLastCommande'])->name('commande.showLastCommande');
+
+
+
+
+    
+});
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route to display the list of Commandes (Index)
-Route::get('/commandes', [App\Http\Controllers\CommandeController::class, 'index'])->name('commandes.index');
 
-// Route to display the form for creating a new Commande (Create)
-Route::get('/commandes/create', [App\Http\Controllers\CommandeController::class, 'create'])->name('commandes.create');
-
-// Route to store a newly created Commande in the database (Store)
-Route::post('/commandes', [App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');
-
-// Route to display details of a specific Commande (Show)
-Route::get('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'show'])->name('commandes.show');
-
-// Route to display the form for editing an existing Commande (Edit)
-Route::get('/commandes/{commande}/edit', [App\Http\Controllers\CommandeController::class, 'edit'])->name('commandes.edit');
-
-// Route to update an existing Commande in the database (Update)
-Route::put('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'update'])->name('commandes.update');
-
-// Route to delete an existing Commande (Delete)
-Route::delete('/commandes/{commande}', [App\Http\Controllers\CommandeController::class, 'delete'])->name('commandes.delete');
