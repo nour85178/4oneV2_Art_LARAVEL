@@ -20,6 +20,6 @@ class ClientMiddleware
             return $next($request);
         }
 
-        return redirect('/front');
+        return redirect('/products');
     }
 }

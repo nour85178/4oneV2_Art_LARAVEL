@@ -13,5 +13,13 @@
         "postcss": "^8.1.14",
         "sass": "^1.56.1",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@babel/core": "^7.23.2",
+        "@babel/preset-env": "^7.23.2",
+        "chart.js": "^4.4.0",
+        "laravel-echo": "^1.15.3",
+        "pusher-js": "^8.3.0",
+        "three-obj-loader": "^1.1.3"
     }
 }
